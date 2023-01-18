@@ -94,11 +94,14 @@ spec:
           - name: elasticsearch.host
             value: "{{ .Values.elasticsearchHosts }}"
           - name: elasticsearch.username
-            value: "elastic"
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.elasticsearchCredentialSecret }}
+                key: username
           - name: elasticsearch.password
             valueFrom:
               secretKeyRef:
-                name: elasticsearch-mysecret
+                name: {{ .Values.elasticsearchCredentialSecret }}
                 key: password
           - name: elasticsearch.ssl.enabled
             value: "true"
