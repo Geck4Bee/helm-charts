@@ -88,18 +88,18 @@ spec:
         imagePullPolicy: "{{ .Values.imagePullPolicy }}"
         env:
           - name: allow_es_settings_modification
-            value: true
+            value: "true"
           - name: elasticsearch.host
             value: "{{ .Values.elasticsearchHosts }}"
           - name: elasticsearch.username
-            value: 'elastic'
+            value: "elastic"
           - name: elasticsearch.password
             valueFrom:
               secretKeyRef:
                 name: elasticsearch-mysecret
                 key: password
           - name: elasticsearch.ssl.enabled
-            value: true
+            value: "true"
           - name: elasticsearch.ssl.certificate_authority
             value: "{{ template "enterprisesearch.home_dir" . }}/config/certs/ca/ca.crt"
           - name: elasticsearch.ssl.certificate
@@ -107,15 +107,15 @@ spec:
           - name: elasticsearch.ssl.key
             value: "{{ template "enterprisesearch.home_dir" . }}//config/certs/tls.key"
           - name: elasticsearch.ssl.verify
-            value: true
+            value: "true"
           - name: kibana.host
             value: "{{ .Values.kibanaHosts }}"
           - name: kibana.external_url
             value: "{{ .Values.kibanaURL }}"
           - name: secret_management.enforce_valid_encryption_keys
-            value: false
+            value: "false"
           - name: ent_search.ssl.enabled
-            value: false
+            value: "false"
           - name: ent_search.external_url
             value: "{{ .Values.enterprisesearchHosts }}:{{ .Values.elasticsearchPort }}"
           - name: ent_search.listen_host
