@@ -121,7 +121,7 @@ spec:
           - name: ent_search.external_url
             value: "{{ .Values.enterprisesearchHosts }}:{{ .Values.elasticsearchPort }}"
           - name: ent_search.listen_host
-            value: "{{ .Values.elasticsearchHosts }}"
+            value: "{{ .Values.elasticsearchHostsIP }}"
           - name: ent_search.listen_port
             value: "{{ .Values.elasticsearchPort }}"
         ports:
