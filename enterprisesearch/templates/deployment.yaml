@@ -103,7 +103,7 @@ spec:
           - name: elasticsearch.ssl.enabled
             value: "true"
           - name: elasticsearch.ssl.certificate_authority
-            value: "{{ template "enterprisesearch.home_dir" . }}/config/certs/ca/ca.crt"
+            value: "{{ template "enterprisesearch.home_dir" . }}/config/certs/{{ .Values.elasticsearchCertificateAuthoritiesFile }}"
           - name: elasticsearch.ssl.certificate
             value: "{{ template "enterprisesearch.home_dir" . }}/config/certs/tls.crt"
           - name: elasticsearch.ssl.key
