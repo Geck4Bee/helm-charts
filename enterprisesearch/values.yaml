@@ -76,6 +76,9 @@ ingress:
         - enterprisesearch.gesontacle.com
 
 readinessProbe:
+  httpGet:
+    path: /
+    port: http
   failureThreshold: 3
   initialDelaySeconds: 10
   periodSeconds: 10
