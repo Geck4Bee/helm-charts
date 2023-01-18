@@ -1,5 +1,5 @@
 ---
-elasticsearchHosts: "https://elasticsearch.gesontacle.com"
+elasticsearchHosts: "https://elasticsearch-master.elastic-stack.svc:9200"
 elasticsearchCertificateSecret: elasticsearch-master-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
 elasticsearchCredentialSecret: elasticsearch-master-credentials
