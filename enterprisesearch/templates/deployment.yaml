@@ -124,8 +124,6 @@ spec:
             value: "{{ .Values.enterprisesearchHostsIP }}"
           - name: ent_search.listen_port
             value: "{{ .Values.enterprisesearchPort }}"
-        readinessProbe:
-{{ toYaml .Values.readinessProbe | indent 10 }}
         ports:
           - containerPort: {{ .Values.httpPort }}
 {{- if .Values.lifecycle }}
