@@ -45,7 +45,7 @@ updateStrategy:
   type: "Recreate"
 
 service:
-  type: ClusterIP
+  type: NodePort
   loadBalancerIP: ""
   port: 3002
   nodePort: ""
