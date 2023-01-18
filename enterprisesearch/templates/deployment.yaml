@@ -81,7 +81,7 @@ spec:
 {{ toYaml .Values.imagePullSecrets | indent 8 }}
     {{- end }}
       containers:
-      - nane: enterprisesearch
+      - name: enterprisesearch
         securityContext:
 {{ toYaml .Values.securityContext | indent 10 }}
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
