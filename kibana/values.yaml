@@ -3,6 +3,7 @@ elasticsearchHosts: "https://elasticsearch-master.elastic-stack.svc:9200"
 elasticsearchCertificateSecret: elasticsearch-master-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
 elasticsearchCredentialSecret: elasticsearch-master-credentials
+enterprisesearchHost: "https://gesontacle-enterprisesearch-enterprisesearch.elastic-stack.svc:3002"
 
 #2. Retrieve the elastic user's password.
 #  $ kubectl get secrets --namespace=elastic-stack elasticsearch-master-credentials -ojsonpath='{.data.password}' | base64 -d
