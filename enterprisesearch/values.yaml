@@ -78,7 +78,7 @@ ingress:
 readinessProbe:
   httpGet:
     path: /
-    port: http
+    port: "80"
   failureThreshold: 3
   initialDelaySeconds: 10
   periodSeconds: 10
