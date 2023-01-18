@@ -1,0 +1,9 @@
+apiVersion: v1
+description: Custom Elastic helm chart for EnterpriseSearch
+home: https://github.com/geck4bee/helm-charts
+maintainers:
+  - email: geck4bee@gmail.com
+    name: geck4bee
+name: enterprisesearch
+version: 8.6.0
+appVersion: 8.6.0

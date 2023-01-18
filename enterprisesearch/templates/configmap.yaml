@@ -1,0 +1,13 @@
+{{- if .Values.enterprisesearchConfig }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "enterprisesearch.fullname" . }}-config
+  labels: {{ include "enterprisesearch.labels" . | nindent 4 }}
+data:
+{{- range $path, $config := .Values.enterprisesearchConfig }}
+  {{ $path }}: |
+{{ tpl $config $ | indent 4 -}}
+{{- end -}}
+{{- end -}}

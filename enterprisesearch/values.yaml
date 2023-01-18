@@ -1,0 +1,101 @@
+---
+elasticsearchHosts: "https://elasticsearch-master.elastic-stack.svc:9200"
+elasticsearchCertificateSecret: elasticsearch-master-certs
+elasticsearchCertificateAuthoritiesFile: ca.crt
+elasticsearchCredentialSecret: elasticsearch-master-credentials
+kibanaURL: "https://gesontacle-kibana-kibana.elastic-stack.svc:5601"
+kibanaHosts: "https://gesontacle-kibana-kibana.elastic-stack.svc:5601"
+enterprisesearchHosts: "https://enterprisesearch.gesontacle.com"
+elasticsearchPort: "3002"
+
+replicas: 1
+
+resources:
+  requests:
+    cpu: "1000m"
+    memory: "2Gi"
+  limits:
+    cpu: "1000m"
+    memory: "2Gi"
+
+image: "docker.elastic.co/enterprise-search/enterprise-search"
+imageTag: "8.6.0"
+
+enterprisesearchConfig: {}
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  # readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+serviceAccount: ""
+
+priorityClassName: ""
+
+httpPort: 3002
+
+updateStrategy:
+  type: "Recreate"
+
+service:
+  type: ClusterIP
+  loadBalancerIP: ""
+  port: 3002
+  nodePort: ""
+  labels: {}
+  annotations: {}
+  # cloud.google.com/load-balancer-type: "Internal"
+  # service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+  # service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  # service.beta.kubernetes.io/openstack-internal-load-balancer: "true"
+  # service.beta.kubernetes.io/cce-load-balancer-internal-vpc: "true"
+  loadBalancerSourceRanges: []
+  # 0.0.0.0/0
+  httpPortName: http
+
+ingress:
+  enabled: true
+  className: "nginx"
+  pathtype: ImplementationSpecific
+  annotations: {}
+  kubernetes.io/ingress.class: nginx
+  # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: enterprisesearch.gesontacle.com
+      paths:
+        - path: /
+  tls:
+    - secretName: gesontacle-tls
+      hosts:
+        - enterprisesearch.gesontacle.com
+
+readinessProbe:
+  failureThreshold: 3
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  successThreshold: 3
+  timeoutSeconds: 5
+
+imagePullSecrets: []
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+nameOverride: ""
+fullnameOverride: ""
+
+lifecycle: {}
+# preStop:
+#   exec:
+#     command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
+# postStart:
+#   exec:
+#     command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
+
+
