@@ -81,7 +81,7 @@ readinessProbe:
     path: /
     port: 3002
   failureThreshold: 3
-  initialDelaySeconds: 180
+  initialDelaySeconds: 30
   periodSeconds: 10
   successThreshold: 3
   timeoutSeconds: 5
