@@ -88,7 +88,7 @@ spec:
         imagePullPolicy: "{{ .Values.imagePullPolicy }}"
         env:
           - name: secret_management.encryption_keys
-            value: ["ba2df93d2b60e658af14d1ece8f57daf6e37a82f5b11ecfdef6d0bd1a1e61af2"]
+            value: "ba2df93d2b60e658af14d1ece8f57daf6e37a82f5b11ecfdef6d0bd1a1e61af2"
           - name: allow_es_settings_modification
             value: "true"
           - name: elasticsearch.host
