@@ -21,8 +21,8 @@ roles:
   - remote_cluster_client
   - transform
 
-replicas: 3
-minimumMasterNodes: 2
+replicas: 1
+minimumMasterNodes: 1
 
 esMajorVersion: ""
 
@@ -107,6 +107,7 @@ networkHost: "0.0.0.0"
 
 volumeClaimTemplate:
   accessModes: ["ReadWriteOnce"]
+  storageClassName: "elastic-search"
   resources:
     requests:
       storage: 30Gi
@@ -168,7 +169,7 @@ priorityClassName: ""
 
 # By default this will make sure two pods don't end up on the same node
 # Changing this to a region would allow you to spread pods across regions
-antiAffinityTopologyKey: "kubernetes.io/hostname"
+antiAffinityTopologyKey: "kubernetes.io/gesontacle"
 
 # Hard means that by default pods will only be scheduled if there are enough nodes for them
 # and that they will never end up on the same node. Setting this to soft will do this "best effort"
@@ -260,13 +261,13 @@ ingress:
   className: "nginx"
   pathtype: ImplementationSpecific
   hosts:
-    - host: chart-example.local
+    - host: elasticsearch.gesontacle.com
       paths:
         - path: /
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  tls:
+    - secretName: gesontacle-tls
+      hosts:
+        - elasticsearch.gesontacle.com
 
 nameOverride: ""
 fullnameOverride: ""
