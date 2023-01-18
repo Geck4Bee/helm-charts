@@ -122,8 +122,6 @@ spec:
             value: "{{ .Values.elasticsearchHosts }}"
           - name: ent_search.listen_port
             value: "{{ .Values.elasticsearchPort }}"
-#        readinessProbe:
-#{{ toYaml .Values.readinessProbe | indent 10 }}
         ports:
           - containerPort: {{ .Values.httpPort }}
 {{- if .Values.lifecycle }}
