@@ -1,6 +1,6 @@
 ---
 elasticsearchHosts: "https://elasticsearch-master.elastic-stack.svc:9200"
-elasticsearchHostsIP: "10.244.0.59"
+elasticsearchHostsIP: "127.0.0.1"
 enterprisesearchPort: "3002"
 elasticsearchCertificateSecret: elasticsearch-master-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
