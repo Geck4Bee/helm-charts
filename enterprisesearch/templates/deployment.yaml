@@ -119,11 +119,11 @@ spec:
           - name: ent_search.ssl.enabled
             value: "false"
           - name: ent_search.external_url
-            value: "{{ .Values.enterprisesearchHosts }}:{{ .Values.elasticsearchPort }}"
+            value: "{{ .Values.enterprisesearchHosts }}:{{ .Values.enterprisesearchPort }}"
           - name: ent_search.listen_host
-            value: "{{ .Values.elasticsearchHostsIP }}"
+            value: "{{ .Values.enterprisesearchHostsIP }}"
           - name: ent_search.listen_port
-            value: "{{ .Values.elasticsearchPort }}"
+            value: "{{ .Values.enterprisesearchPort }}"
         readinessProbe:
 {{ toYaml .Values.readinessProbe | indent 10 }}
         ports:
