@@ -133,8 +133,14 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         volumeMounts:
-          - name: elasticsearh-certs
+          - name: elasticsearch-certs
             mountPath: {{ template "enterprisesearch.home_dir" . }}/config/certs
             readOnly: true
-          - name: enterprisearch-data
+          - name: enterprisesearch-data
             mountPath: {{ template "enterprisesearch.home_dir" . }}/data
+      volumes:
+        - name: elasticsearch-certs
+          secret:
+            secretName: {{ .Values.elasticsearchCertificateSecret }}
+        - name: enterprisesearch-data
+          emptyDir: {}
