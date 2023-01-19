@@ -30,7 +30,13 @@ esMajorVersion: ""
 # such as elasticsearch.yml and log4j2.properties
 esConfig:
   elasticsearch.yml: |
-   reindex.remote.whitelist: "c787eec03a194541bb2f332ddf0c927c.ap-northeast-1.aws.found.io:443"
+    reindex.remote.whitelist: "c787eec03a194541bb2f332ddf0c927c.ap-northeast-1.aws.found.io:443"
+    http.cors.allow-origin: "*"
+    http.cors.enabled: true
+    http.cors.allow-credentials: true
+    http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
+    http.cors.allow-headers: X-Requested-With, X-Auth-Token, Content-Type, Content-Length, Authorization, Access-Control-Allow-Headers, Accept, x-elastic-client-meta
+
 #  log4j2.properties: |
 #    key = value
 
@@ -254,8 +260,13 @@ tolerations: []
 # Only enable this if you have security enabled on your cluster
 ingress:
   enabled: true
-  annotations: {}
-  kubernetes.io/ingress.class: nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS, HEAD, DELETE"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "X-Requested-With, X-Auth-Token, Content-Type, Content-Length, Authorization, Access-Control-Allow-Headers, Accept, x-elastic-client-meta"
   # kubernetes.io/tls-acme: "true"
   className: "nginx"
   pathtype: ImplementationSpecific
