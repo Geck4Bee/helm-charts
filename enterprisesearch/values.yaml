@@ -6,7 +6,7 @@ elasticsearchCertificateSecret: elasticsearch-master-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
 elasticsearchCredentialSecret: elasticsearch-master-credentials
 kibanaURL: "https://kibana.gesontacle.com"
-kibanaHosts: "https://gesontacle-kibana-kibana.elastic-stack.svc:5601"
+kibanaHosts: "https://kibana.gesontacle.com"
 enterprisesearchHosts: "https://enterprisesearch.gesontacle.com"
 
 replicas: 1
@@ -64,9 +64,15 @@ ingress:
   enabled: false
   className: "nginx"
   pathtype: ImplementationSpecific
-  annotations: {}
-  kubernetes.io/ingress.class: nginx
-  # kubernetes.io/tls-acme: "true"
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS, HEAD, DELETE"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "X-Requested-With, X-Auth-Token, Content-Type, Content-Length, Authorization, Access-Control-Allow-Headers, Accept, x-elastic-client-meta"
+    nginx.ingress.kubernetes.io/proxy-ssl-verify: "false"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   hosts:
     - host: enterprisesearch.gesontacle.com
       paths:
