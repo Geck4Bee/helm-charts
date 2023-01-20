@@ -72,7 +72,7 @@ healthCheckPath: "/app/kibana"
 kibanaConfig:
   kibana.yml: |
     enterpriseSearch.host: "https://enterprisesearch.gesontacle.com"
-    enterpriseSearch.ssl.verificationMode: certificate
+    enterpriseSearch.ssl.verificationMode: none
     enterpriseSearch.ssl.certificateAuthorities:
       - /usr/share/kibana/keys/gesontacle.com.pem
 #    server.cors.allowOrigin: "*"
