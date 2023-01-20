@@ -7,7 +7,7 @@ elasticsearchCertificateAuthoritiesFile: ca.crt
 elasticsearchCredentialSecret: elasticsearch-master-credentials
 kibanaURL: "https://kibana.gesontacle.com"
 kibanaHosts: "https://gesontacle-kibana-kibana.elastic-stack.svc:5601"
-enterprisesearchHosts: "https://gesontacle-enterprisesearch-enterprisesearch.elastic-stack.svc:3002"
+enterprisesearchHosts: "https://enterprisesearch.gesontacle.com:443"
 
 replicas: 1
 
