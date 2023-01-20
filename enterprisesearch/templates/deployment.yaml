@@ -122,7 +122,7 @@ spec:
           - name: ent_search.ssl.enabled
             value: "true"
           - name: ent_search.ssl.keystore.path
-            value: "{{ template enterprisesearch.home.dir . }}/keys/keystore.jks"
+            value: "{{ template "enterprisesearch.home.dir" . }}/keys/keystore.jks"
           - name: ent_search.ssl.keystore.password
             value: "changeme"
           - name: ent_search.ssl.keystore.key_password
