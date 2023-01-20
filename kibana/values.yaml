@@ -103,7 +103,7 @@ priorityClassName: ""
 httpPort: 5601
 
 extraVolumes:
-  - name: extras
+  - name: elastic-kibana-keys
     persistentVolumeClaim:
       claimName: elastic-kibana-keys
 
