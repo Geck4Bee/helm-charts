@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: elastic-kibana-keys
+  labels: {{ include "kibana.labels" . | nindent 4 }}
+spec:
+  storageClassName: elastic-kibana-keys
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Mi

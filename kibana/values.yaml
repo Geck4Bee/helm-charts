@@ -72,6 +72,9 @@ healthCheckPath: "/app/kibana"
 kibanaConfig:
   kibana.yml: |
     enterpriseSearch.host: "https://enterprisesearch.gesontacle.com"
+    enterpriseSearch.ssl.verificationMode: certificate
+    enterpriseSearch.ssl.certificateAuthorities:
+      - /usr/share/kibana/keys/gesontacle.com.pem
 #    server.cors.allowOrigin: "*"
 #    server.cors.enabled: true
 #    server.cors.allowCredentials: true
@@ -100,16 +103,14 @@ priorityClassName: ""
 httpPort: 5601
 
 extraVolumes:
-  []
-  # - name: extras
-  #   emptyDir: {}
+  - name: extras
+    persistentVolumeClaim:
+      claimName: elastic-kibana-keys
 
 extraVolumeMounts:
-  []
-  # - name: extras
-  #   mountPath: /usr/share/extras
-  #   readOnly: true
-  #
+  - name: elastic-kibana-keys
+    mountPath: /usr/share/kibana/keys
+    readOnly: true
 
 extraContainers: []
 # - name: dummy-init

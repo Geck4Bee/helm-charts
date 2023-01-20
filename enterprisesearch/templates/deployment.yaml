@@ -120,7 +120,13 @@ spec:
           - name: secret_management.enforce_valid_encryption_keys
             value: "false"
           - name: ent_search.ssl.enabled
-            value: "false"
+            value: "true"
+          - name: ent_search.ssl.keystore.path
+            value: "{{ template enterprisesearch.home.dir . }}/keys/keystore.jks"
+          - name: ent_search.ssl.keystore.password
+            value: "changeme"
+          - name: ent_search.ssl.keystore.key_password
+            value: "Kajima157828!!!"
           - name: ent_search.external_url
             value: "{{ .Values.enterprisesearchHosts }}:{{ .Values.enterprisesearchPort }}"
           - name: ent_search.listen_host
@@ -141,9 +147,15 @@ spec:
             readOnly: true
           - name: enterprisesearch-data
             mountPath: {{ template "enterprisesearch.home_dir" . }}/data
+          - name: enterprisesearch-key
+            mountPath: {{ template "enterprisesearch.home.dir" . }}/keys
+            readOnly: true
       volumes:
         - name: elasticsearch-certs
           secret:
             secretName: {{ .Values.elasticsearchCertificateSecret }}
         - name: enterprisesearch-data
           emptyDir: {}
+        - name: enterprisesearch-key
+          persistentVolumeClaim:
+            claimName: elastic-enterprisesearch-keys
