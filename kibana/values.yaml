@@ -71,7 +71,12 @@ healthCheckPath: "/app/kibana"
 # such as kibana.yml
 kibanaConfig:
   kibana.yml: |
-    enterpriseSearch.host: "https://gesontacle-enterprisesearch-enterprisesearch.elastic-stack.svc:3002"
+    enterpriseSearch.host: "https://enterprisesearch.gesontacle.com"
+    http.cors.allow-origin: "*"
+    http.cors.enabled: true
+    http.cors.allow-credentials: true
+    http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
+    http.cors.allow-headers: X-Requested-With, X-Auth-Token, Content-Type, Content-Length, Authorization, Access-Control-Allow-Headers, Accept, x-elastic-client-meta
 
 # If Pod Security Policy in use it may be required to specify security context as well as service account
 
