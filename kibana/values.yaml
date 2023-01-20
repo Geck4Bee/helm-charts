@@ -72,9 +72,9 @@ healthCheckPath: "/app/kibana"
 kibanaConfig:
   kibana.yml: |
     enterpriseSearch.host: "https://enterprisesearch.gesontacle.com"
-    server.cors.allowOrigin: "*"
-    server.cors.enabled: true
-    server.cors.allowCredentials: true
+#    server.cors.allowOrigin: "*"
+#    server.cors.enabled: true
+#    server.cors.allowCredentials: true
 # If Pod Security Policy in use it may be required to specify security context as well as service account
 
 podSecurityContext:
