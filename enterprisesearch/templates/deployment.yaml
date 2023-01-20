@@ -126,7 +126,7 @@ spec:
           - name: ent_search.ssl.keystore.password
             value: "changeme"
           - name: ent_search.ssl.keystore.key_password
-            value: "Kajima157828!!!"
+            value: "changeme"
           - name: ent_search.external_url
             value: "{{ .Values.enterprisesearchHosts }}"
           - name: ent_search.listen_port
