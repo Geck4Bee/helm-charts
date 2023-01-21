@@ -76,7 +76,7 @@ ingress:
     nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS, HEAD, DELETE"
     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: "https://gesontacle.com, https://kibana.gesontacle.com, https://staging--relaxed-hypatia-0d2637.netlify.app"
-    nginx.ingress.kubernetes.io/cors-allow-headers: "X-Requested-With, X-Auth-Token, Content-Type, Content-Length, Authorization, Access-Control-Allow-Headers, Accept, x-elastic-client-meta x-swiftype-client"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "X-Requested-With, X-Auth-Token, Content-Type, Content-Length, Authorization, Access-Control-Allow-Headers, Accept, x-elastic-client-meta, x-swiftype-client"
     nginx.ingress.kubernetes.io/proxy-ssl-verify: "false"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   hosts:
