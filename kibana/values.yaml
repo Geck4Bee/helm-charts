@@ -146,6 +146,7 @@ ingress:
   className: "nginx"
   pathtype: ImplementationSpecific
   annotations:
+    kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS, HEAD, DELETE"
     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
